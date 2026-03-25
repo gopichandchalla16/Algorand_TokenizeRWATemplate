@@ -2,42 +2,46 @@ import { useWallet } from '@txnlab/use-wallet-react'
 import { Link } from 'react-router-dom'
 
 /**
- * Home Page
- * Landing page showcasing the RWA tokenization platform
- * Displays features, how it works, and CTAs to connect wallet and create assets
+ * ChainVault Protocol - Home Page
+ * Trusted infrastructure for real-world asset tokenization on Algorand
  */
 export default function Home() {
   const { activeAddress } = useWallet()
 
   return (
-    <div className="bg-white dark:bg-slate-950">
+    <div className="bg-white dark:bg-indigo-950">
+
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
         <div className="text-center">
-          <div className="inline-block mb-4 px-3 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-sm font-semibold rounded-full">
-            RWA Tokenization Platform
+          <div className="inline-block mb-6 px-4 py-2 bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 text-sm font-semibold rounded-full border border-indigo-200 dark:border-indigo-800/50">
+            Institutional RWA Infrastructure
           </div>
 
-          <h1 className="mt-4 text-5xl sm:text-6xl font-bold text-slate-900 dark:text-white leading-tight">
-            Tokenize Real-World Assets on Algorand
+          <h1 className="mt-6 text-5xl sm:text-7xl font-bold text-slate-900 dark:text-white leading-tight tracking-tight">
+            Tokenize Your Assets
+            <span className="block text-indigo-600 dark:text-indigo-400">On-Chain. Today.</span>
           </h1>
 
-          <p className="mt-6 text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Create Algorand Standard Assets (ASA) with built-in compliance features. Perfect for founders prototyping RWA solutions.
+          <p className="mt-8 text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            ChainVault Protocol provides trusted infrastructure for real-world asset tokenization.
+            Create Algorand Standard Assets with institutional-grade compliance features, instantly and at scale.
           </p>
 
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/tokenize"
-              className={`px-8 py-3 rounded-lg font-semibold transition text-white shadow-md ${
-                activeAddress ? 'bg-teal-600 hover:bg-teal-700' : 'bg-slate-400 cursor-not-allowed'
+              className={`px-8 py-3 rounded-lg font-semibold transition text-white ${
+                activeAddress
+                  ? 'bg-indigo-600 hover:bg-indigo-700 shadow-md'
+                  : 'bg-slate-400 cursor-not-allowed'
               }`}
             >
-              Start Tokenizing
+              Launch Protocol
             </Link>
 
             <a
-              className="px-8 py-3 border-2 border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 rounded-lg font-semibold hover:border-slate-400 dark:hover:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition"
+              className="px-8 py-3 border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 rounded-lg font-semibold hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition"
               target="_blank"
               rel="noreferrer"
               href="https://dev.algorand.co/concepts/assets/overview/"
@@ -47,224 +51,233 @@ export default function Home() {
           </div>
 
           {!activeAddress && (
-            <p className="mt-6 text-slate-500 dark:text-slate-400">Connect your wallet using the button in the top-right to get started.</p>
+            <p className="mt-6 text-slate-600 dark:text-slate-400 text-sm">
+              Connect your wallet in the top-right to get started with your tokenization pilot.
+            </p>
           )}
+
+          {/* Trust Row */}
+          <div className="mt-12 flex flex-col sm:flex-row justify-center gap-8 sm:gap-12 text-sm text-slate-600 dark:text-slate-400">
+            <div className="flex items-center gap-2">
+              <span className="text-indigo-600 dark:text-indigo-400 font-bold">✓</span>
+              <span>3-second finality on Algorand</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-indigo-600 dark:text-indigo-400 font-bold">✓</span>
+              <span>Sub-cent transaction costs</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-indigo-600 dark:text-indigo-400 font-bold">✓</span>
+              <span>Compliance-ready features</span>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* How It Works */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
-        <div className="flex items-end justify-between gap-6 mb-8">
-          <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">How it works</h2>
-            <p className="mt-2 text-slate-600 dark:text-slate-300 max-w-2xl">
-              A clean, end-to-end flow: connect → mint → track → transfer.
-            </p>
-          </div>
-
-          <div className="hidden sm:flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-            <span className="inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-            Ready for TestNet demos
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
+        <div className="mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
+            From Concept to Blockchain in 4 Steps
+          </h2>
+          <p className="mt-3 text-lg text-slate-600 dark:text-slate-400 max-w-2xl">
+            A streamlined workflow designed for institutional users and blockchain pioneers.
+          </p>
         </div>
 
-        {/* Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {/* Steps Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
           {/* Step 1 */}
-          <div
-            className="group rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/40 backdrop-blur
-                          p-6 hover:shadow-lg hover:shadow-slate-200/40 dark:hover:shadow-black/30 transition"
-          >
+          <div className="group rounded-xl border border-slate-200 dark:border-indigo-800/40 bg-slate-50 dark:bg-indigo-900/20 backdrop-blur p-8 hover:shadow-lg hover:border-indigo-400 dark:hover:border-indigo-600 transition">
             <div className="flex items-start gap-4">
-              <div
-                className="shrink-0 inline-flex items-center justify-center h-10 w-10 rounded-xl
-                              bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300 font-bold"
-              >
+              <div className="shrink-0 inline-flex items-center justify-center h-12 w-12 rounded-lg bg-indigo-600 text-white font-bold text-lg">
                 1
               </div>
               <div className="min-w-0">
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white">Connect Wallet</h3>
-                <p className="mt-1 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                  Use Pera, Defly, Exodus, or KMD on localnet. One click to connect.
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Pera, Defly, Exodus, or KMD. One-click authentication with your keys secured locally.
                 </p>
               </div>
             </div>
-
-            <div className="mt-4 h-px bg-slate-100 dark:bg-slate-800" />
-
-            <div className="mt-4 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-              <span>Wallet sign-in</span>
-              <span className="group-hover:text-teal-600 dark:group-hover:text-teal-300 transition">Instant</span>
+            <div className="mt-6 pt-4 border-t border-slate-200 dark:border-indigo-800/40 flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
+              <span>Authentication</span>
+              <span className="text-indigo-600 dark:text-indigo-400 font-semibold">Instant</span>
             </div>
           </div>
 
           {/* Step 2 */}
-          <div
-            className="group rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/40 backdrop-blur
-                          p-6 hover:shadow-lg hover:shadow-slate-200/40 dark:hover:shadow-black/30 transition"
-          >
+          <div className="group rounded-xl border border-slate-200 dark:border-indigo-800/40 bg-slate-50 dark:bg-indigo-900/20 backdrop-blur p-8 hover:shadow-lg hover:border-indigo-400 dark:hover:border-indigo-600 transition">
             <div className="flex items-start gap-4">
-              <div
-                className="shrink-0 inline-flex items-center justify-center h-10 w-10 rounded-xl
-                              bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300 font-bold"
-              >
+              <div className="shrink-0 inline-flex items-center justify-center h-12 w-12 rounded-lg bg-indigo-600 text-white font-bold text-lg">
                 2
               </div>
               <div className="min-w-0">
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white">Create ASA</h3>
-                <p className="mt-1 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                  Define asset properties: name, symbol, supply, and optional metadata URL.
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">Define Your Asset</h3>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Configure name, symbol, supply, decimals, and compliance roles. Fully customizable.
                 </p>
               </div>
             </div>
-
-            <div className="mt-4 h-px bg-slate-100 dark:bg-slate-800" />
-
-            <div className="mt-4 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-              <span>Mint on TestNet</span>
-              <span className="group-hover:text-teal-600 dark:group-hover:text-teal-300 transition">Fast</span>
+            <div className="mt-6 pt-4 border-t border-slate-200 dark:border-indigo-800/40 flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
+              <span>Configuration</span>
+              <span className="text-indigo-600 dark:text-indigo-400 font-semibold">Flexible</span>
             </div>
           </div>
 
           {/* Step 3 */}
-          <div
-            className="group rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/40 backdrop-blur
-                          p-6 hover:shadow-lg hover:shadow-slate-200/40 dark:hover:shadow-black/30 transition"
-          >
+          <div className="group rounded-xl border border-slate-200 dark:border-indigo-800/40 bg-slate-50 dark:bg-indigo-900/20 backdrop-blur p-8 hover:shadow-lg hover:border-indigo-400 dark:hover:border-indigo-600 transition">
             <div className="flex items-start gap-4">
-              <div
-                className="shrink-0 inline-flex items-center justify-center h-10 w-10 rounded-xl
-                              bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300 font-bold"
-              >
+              <div className="shrink-0 inline-flex items-center justify-center h-12 w-12 rounded-lg bg-indigo-600 text-white font-bold text-lg">
                 3
               </div>
               <div className="min-w-0">
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white">Track Assets</h3>
-                <p className="mt-1 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                  View your created assets in a local history table (stored in your browser).
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">Mint on TestNet</h3>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  One blockchain transaction. Your Algorand Standard Asset is live instantly.
                 </p>
               </div>
             </div>
-
-            <div className="mt-4 h-px bg-slate-100 dark:bg-slate-800" />
-
-            <div className="mt-4 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-              <span>Local history</span>
-              <span className="group-hover:text-teal-600 dark:group-hover:text-teal-300 transition">Simple</span>
+            <div className="mt-6 pt-4 border-t border-slate-200 dark:border-indigo-800/40 flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
+              <span>On-chain</span>
+              <span className="text-indigo-600 dark:text-indigo-400 font-semibold">Immutable</span>
             </div>
           </div>
 
           {/* Step 4 */}
-          <div
-            className="group rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/40 backdrop-blur
-                          p-6 hover:shadow-lg hover:shadow-slate-200/40 dark:hover:shadow-black/30 transition"
-          >
+          <div className="group rounded-xl border border-slate-200 dark:border-indigo-800/40 bg-slate-50 dark:bg-indigo-900/20 backdrop-blur p-8 hover:shadow-lg hover:border-indigo-400 dark:hover:border-indigo-600 transition">
             <div className="flex items-start gap-4">
-              <div
-                className="shrink-0 inline-flex items-center justify-center h-10 w-10 rounded-xl
-                              bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300 font-bold"
-              >
+              <div className="shrink-0 inline-flex items-center justify-center h-12 w-12 rounded-lg bg-indigo-600 text-white font-bold text-lg">
                 4
               </div>
               <div className="min-w-0">
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white">Transfer Assets</h3>
-                <p className="mt-1 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                  Send ALGO, TestNet USDC, or any ASA using the built-in transfer tool.
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">Transfer & Trade</h3>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Send ALGO, USDC, or your custom ASA using our integrated transfer module.
                 </p>
               </div>
             </div>
-
-            <div className="mt-4 h-px bg-slate-100 dark:bg-slate-800" />
-
-            <div className="mt-4 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-              <span>Built-in transfers</span>
-              <span className="group-hover:text-teal-600 dark:group-hover:text-teal-300 transition">All-in-one</span>
+            <div className="mt-6 pt-4 border-t border-slate-200 dark:border-indigo-800/40 flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
+              <span>Exchange</span>
+              <span className="text-indigo-600 dark:text-indigo-400 font-semibold">Seamless</span>
             </div>
           </div>
+
         </div>
       </div>
 
-      {/* Features Highlight */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-6">Compliance-Ready Features</h2>
-            <ul className="space-y-4">
-              <li className="flex gap-3">
-                <span className="text-blue-600 font-bold text-xl">✓</span>
-                <span className="text-gray-700 dark:text-gray-300">
-                  <strong>Manager Role:</strong> Update asset settings
-                </span>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-blue-600 font-bold text-xl">✓</span>
-                <span className="text-gray-700 dark:text-gray-300">
-                  <strong>Freeze Account:</strong> Restrict transfers
-                </span>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-blue-600 font-bold text-xl">✓</span>
-                <span className="text-gray-700 dark:text-gray-300">
-                  <strong>Clawback Authority:</strong> Recover tokens if needed
-                </span>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-blue-600 font-bold text-xl">✓</span>
-                <span className="text-gray-700 dark:text-gray-300">
-                  <strong>Metadata Support:</strong> Link off-chain documentation
-                </span>
-              </li>
-            </ul>
-          </div>
-          <div className="bg-slate-100 dark:bg-slate-800 rounded-lg p-8">
-            <div className="bg-white dark:bg-slate-700 rounded border border-slate-300 dark:border-slate-600 p-6">
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 font-mono">Asset Configuration Example</p>
-              <div className="space-y-2 text-sm">
+      {/* Compliance Features — Full width background */}
+      <div className="bg-indigo-50 dark:bg-indigo-900/10 py-20 sm:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-8">
+                Built for Compliance & Control
+              </h2>
+              <ul className="space-y-5">
+                <li className="flex gap-3">
+                  <span className="text-amber-600 dark:text-amber-400 font-bold text-xl">✓</span>
+                  <div>
+                    <p className="font-semibold text-slate-900 dark:text-white">Manager Role</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">Update asset configuration and metadata anytime</p>
+                  </div>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-amber-600 dark:text-amber-400 font-bold text-xl">✓</span>
+                  <div>
+                    <p className="font-semibold text-slate-900 dark:text-white">Freeze Account Authority</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">Restrict transfers for regulatory compliance</p>
+                  </div>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-amber-600 dark:text-amber-400 font-bold text-xl">✓</span>
+                  <div>
+                    <p className="font-semibold text-slate-900 dark:text-white">Clawback Mechanism</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">Recover tokens when legally required</p>
+                  </div>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-amber-600 dark:text-amber-400 font-bold text-xl">✓</span>
+                  <div>
+                    <p className="font-semibold text-slate-900 dark:text-white">Metadata Support</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">Link to off-chain legal documents and compliance metadata</p>
+                  </div>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-amber-600 dark:text-amber-400 font-bold text-xl">✓</span>
+                  <div>
+                    <p className="font-semibold text-slate-900 dark:text-white">Layer 1 Native</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">No smart contract risk. Pure Algorand Standard Asset.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            {/* Terminal Config Card */}
+            <div className="bg-slate-900 dark:bg-slate-950 rounded-xl border border-slate-800 p-8 font-mono text-sm">
+              <p className="text-slate-400 mb-6 text-xs uppercase tracking-wider">Asset Configuration Example</p>
+              <div className="space-y-3">
                 <div>
-                  <span className="text-gray-500 dark:text-gray-400">Name:</span>{' '}
-                  <span className="font-semibold text-gray-900 dark:text-white">Real Estate Token</span>
+                  <span className="text-slate-500 text-xs">Name</span>
+                  <span className="text-amber-400 block">Real Estate Fund Token (Pilot)</span>
                 </div>
                 <div>
-                  <span className="text-gray-500 dark:text-gray-400">Symbol:</span>{' '}
-                  <span className="font-semibold text-gray-900 dark:text-white">PROPERTY</span>
+                  <span className="text-slate-500 text-xs">Symbol</span>
+                  <span className="text-amber-400 block">REFUND</span>
                 </div>
                 <div>
-                  <span className="text-gray-500 dark:text-gray-400">Total Supply:</span>{' '}
-                  <span className="font-semibold text-gray-900 dark:text-white">1,000,000</span>
+                  <span className="text-slate-500 text-xs">Total Supply</span>
+                  <span className="text-amber-400 block">100,000,000</span>
                 </div>
                 <div>
-                  <span className="text-gray-500 dark:text-gray-400">Decimals:</span>{' '}
-                  <span className="font-semibold text-gray-900 dark:text-white">2</span>
+                  <span className="text-slate-500 text-xs">Decimals</span>
+                  <span className="text-amber-400 block">2</span>
                 </div>
                 <div>
-                  <span className="text-gray-500 dark:text-gray-400">Manager:</span>{' '}
-                  <span className="font-semibold text-gray-900 dark:text-white">Your Wallet</span>
+                  <span className="text-slate-500 text-xs">Manager</span>
+                  <span className="text-amber-400 block">Your Wallet Address</span>
+                </div>
+                <div className="border-t border-slate-700 pt-3 mt-3">
+                  <span className="text-slate-500 text-xs">Network</span>
+                  <span className="text-green-400 block">✅ Algorand TestNet</span>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
 
-      {/* CTA Section */}
-      <div className="bg-teal-600 dark:bg-teal-700 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Ready to get started?</h2>
-          <p className="text-lg text-teal-100 mb-8 max-w-2xl mx-auto">
-            Launch your first RWA token in minutes. No complicated setup, no hidden fees.
+      {/* POC Notice Banner */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 p-4 text-center text-sm text-amber-900 dark:text-amber-300">
+          🔬 This is a proof-of-concept demo built during the Algorand Web3 Masterclasses Batch 3 — Session 4 &amp; 5. Algorand TestNet only. Not for production use.
+        </div>
+      </div>
+
+      {/* Final CTA */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+        <div className="rounded-2xl bg-gradient-to-br from-indigo-600 to-indigo-700 dark:from-indigo-900 dark:to-indigo-950 border border-indigo-500/30 dark:border-indigo-800 p-12 text-center text-white">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Ready to Pilot ChainVault Protocol?</h2>
+          <p className="text-lg text-indigo-100 dark:text-indigo-300 mb-10 max-w-2xl mx-auto">
+            Connect your Algorand wallet and deploy your first real-world asset token in seconds.
+            Zero setup complexity. TestNet ready.
           </p>
           <Link
             to="/tokenize"
-            className={`inline-block px-8 py-3 rounded-lg font-semibold transition ${
+            className={`inline-block px-10 py-3 rounded-lg font-semibold transition ${
               activeAddress
-                ? 'bg-white text-teal-600 dark:bg-slate-800 dark:text-teal-400 hover:bg-slate-100 dark:hover:bg-slate-700 shadow-md'
-                : 'bg-teal-400 text-white cursor-not-allowed'
+                ? 'bg-white text-indigo-600 hover:bg-indigo-50 shadow-lg'
+                : 'bg-indigo-400 text-white cursor-not-allowed'
             }`}
           >
-            Create Your First Asset
+            Launch Protocol
           </Link>
         </div>
       </div>
+
     </div>
   )
 }
