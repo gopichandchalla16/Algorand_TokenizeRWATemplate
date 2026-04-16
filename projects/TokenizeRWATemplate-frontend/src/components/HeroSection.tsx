@@ -10,13 +10,13 @@ export default function HeroSection({ setActiveTab }: HeroProps) {
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#0066FF] opacity-5 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-5xl mx-auto text-center">
-        {/* Badge */}
+        {/* Product badge — no competition branding */}
         <div className="inline-flex items-center gap-3 mb-8">
           <span className="badge badge-green">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00D4AA] pulse-green"></span>
-            Algorand Web3 Masterclasses 2026
+            Live on Algorand TestNet
           </span>
-          <span className="badge badge-blue">$20K Prize Pool</span>
+          <span className="badge badge-orange">India RWA Protocol</span>
         </div>
 
         {/* Headline */}
@@ -54,7 +54,7 @@ export default function HeroSection({ setActiveTab }: HeroProps) {
             <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
             </svg>
-            View Asset Registry
+            Explore Asset Registry
           </button>
         </div>
 
