@@ -1,269 +1,212 @@
-# 🧱 RWA Tokenization Template (Algorand)
+# 🏛️ ChainVault RWA Protocol
+### AI-Powered Real-World Asset Tokenization on Algorand
 
-A beginner-friendly, end-to-end template for tokenizing real-world assets (RWAs) on Algorand testnet using Algorand Standard Assets (ASAs).
-
-**This repository is designed for:**
-- Founders exploring RWA proofs-of-concept
-- Builders new to Algorand
-- Hackathons, demos, workshops, and early product experiments
-
-No prior blockchain or smart contract experience required. By the end, you'll have a working tokenized asset with a real Algorand Asset ID.
+> **Algorand Web3 Masterclasses — Pitch Competition 2026**  
+> Built by [Gopichand Challa](https://github.com/gopichandchalla16) · [@GopichandAI](https://x.com/GopichandAI) · Guntur, India
 
 ---
 
-## ✨ What This Template Gives You
+## 🚨 The Problem
 
-- ✅ Complete Algorand starter app (user interface + backend)
-- ✅ Simple flow to create and send Algorand assets (tokens)
-- ✅ Easy sign-in options (Email login + wallet login)
-- ✅ Ready to test on Algorand TestNet
-- ✅ Quick one-step setup (no complex installation)
-- ✅ Can be deployed online (Vercel), with analytics included
+India has a **$1.3 trillion real-estate market** and a **$40 billion annual property fraud** problem.
 
----
+- 67% of civil court cases in India are property disputes
+- Land records are paper-based, fragmented across 640+ districts
+- No trustless way to verify asset ownership before a transaction
+- Buyers have zero protection — fraud is discovered only after payment
 
-## 🧠 What "RWA Tokenization" Means Here
-
-This template covers the blockchain “token” part of real-world asset (RWA) tokenization:
-
-- Each real-world asset is represented as an token on the Algorand blockchain (ASA)
-- Ownership, supply and transfers are tracked on the blockchain
-- The real-world paperwork (documents, custody, legal structure) stays off the blockchain
-
-> ⚠️ This is a technical proof-of-concept template, not legal or financial advice.
+**The world's largest democracy cannot tokenize its land because it cannot verify its land.**
 
 ---
 
-## 🚀 Getting Started (5 Minutes)
+## ✅ The Solution: ChainVault RWA Protocol
 
-### Option 1: [GitHub Codespaces](https://github.com/features/codespaces) (Recommended)
+ChainVault is an **AI-powered real-world asset tokenization platform** built on Algorand that:
 
-This is the fastest and easiest way to run the project.
+1. **Verifies** property documents using an AI agent before any token is minted
+2. **Tokenizes** the verified asset as an Algorand Standard Asset (ASA) with ARC-19 compliant metadata
+3. **Records** the verification proof permanently on-chain — immutable audit trail
+4. **Enables** trustless P2P property transfers with full on-chain ownership history
 
-#### 1️⃣ Fork the repository
+---
 
-Click **Fork** (top-right of this page) to create your own copy.
+## 🏗️ Architecture
 
-https://github.com/user-attachments/assets/92e746e1-3143-4769-8a5a-1339e4bd7a14
+```
+┌─────────────────────────────────────────────────────┐
+│                   USER / dAPP                        │
+│         (uploads property document + details)        │
+└──────────────────────┬──────────────────────────────┘
+                       │
+           ┌───────────▼────────────┐
+           │   AI VERIFICATION      │
+           │   LAYER (Python)       │
+           │                        │
+           │  • document_checker.py │  ← LangChain + Groq LLM
+           │  • risk_scorer.py      │  ← Fraud risk 0-100
+           │  • fraud_detector.py   │  ← Pattern analysis
+           └───────────┬────────────┘
+                       │  AI Score + Verified Metadata
+           ┌───────────▼────────────┐
+           │   ALGORAND LAYER       │
+           │                        │
+           │  • algorand_writer.py  │  ← py-algorand-sdk
+           │  • ASA Mint (ARC-19)   │  ← Verified RWA token
+           │  • On-chain audit log  │  ← Txn note field proof
+           └───────────┬────────────┘
+                       │
+           ┌───────────▼────────────┐
+           │   FRONTEND (React)     │
+           │                        │
+           │  • Upload & verify     │
+           │  • View Asset ID       │
+           │  • Transfer ownership  │
+           │  • Pera / Web3Auth     │
+           └────────────────────────┘
+```
 
-#### 2️⃣ Open in Codespaces
+---
 
-1. Go to your forked repository
-2. Click **Code → Codespaces → Create codespace**
-3. Wait for the environment to load and enter the workspace
+## ⚡ How It Works (3 Steps)
 
-> When the Codespace loads, you may see an **"Open Workspace?"** popup in the bottom-right — click **Yes**.
+### Step 1 — Upload & AI Verify
+User uploads property document (PDF/image). The AI agent:
+- Extracts key claims (owner name, survey number, area, location)
+- Cross-checks for inconsistencies and red flags
+- Returns a **Fraud Risk Score (0–100)** and **Verification Status**
+- Documents with score < 30 are approved for minting
 
-Or manually enter it like below:
+### Step 2 — Mint Verified ASA on Algorand
+If AI approves the document:
+- A unique ASA is created with ARC-19 metadata
+- AI verification hash is written into the Algorand transaction note
+- The property becomes a **verifiable, transferable on-chain asset**
 
-<img width="2794" height="1524" alt="Codespace workspace setup" src="https://github.com/user-attachments/assets/41f25490-1284-4998-b342-27f7a0ffb420" />
+### Step 3 — Transfer & Track Ownership
+- Owners can transfer the ASA to a buyer
+- Full transaction history available on Algorand explorer
+- Freeze/Clawback roles available for regulatory compliance
 
-#### 3️⃣ Run the setup script
+---
 
-In the Codespaces terminal, run:
+## 🛠️ Tech Stack
 
+| Layer | Technology |
+|---|---|
+| **Blockchain** | Algorand (ASA, ARC-19, py-algorand-sdk) |
+| **AI / LLM** | LangChain · Groq LLM · PyPDF2 |
+| **Backend** | Python 3.10+ · FastAPI |
+| **Frontend** | React · Vite · AlgoKit |
+| **Auth** | Web3Auth · Pera Wallet · Defly |
+| **Storage** | IPFS via Pinata (document hash) |
+| **Testnet** | Algorand TestNet |
+
+---
+
+## 📁 Project Structure
+
+```
+chainvault-rwa-protocol/
+├── ai_verifier/
+│   ├── document_checker.py     ← AI document verification agent
+│   ├── risk_scorer.py          ← Fraud risk scoring engine
+│   ├── fraud_detector.py       ← Pattern-based fraud detection
+│   └── requirements.txt        ← AI layer dependencies
+├── blockchain/
+│   └── algorand_writer.py      ← Algorand ASA minting + on-chain proof
+├── models/
+│   └── rwa_asset.py            ← Pydantic schema for RWA metadata
+├── projects/                   ← AlgoKit frontend + contracts
+├── api/
+│   └── main.py                 ← FastAPI endpoints
+├── .env.example                ← Environment variables template
+├── setup.sh                    ← One-click setup
+├── PITCH.md                    ← Pitch deck in markdown
+└── README.md
+```
+
+---
+
+## 🚀 Quick Start
+
+### 1. Clone & Setup
 ```bash
+git clone https://github.com/gopichandchalla16/Algorand_TokenizeRWATemplate
+cd Algorand_TokenizeRWATemplate
 bash setup.sh
 ```
 
-This script will:
-- Install everything needed
-- Set up the required files automatically
-- Start the app for you (open the website)
-
-👉 When it finishes, a web app link will open automatically in Codespaces.
-
-> ⚠️ You do not need to manually create `.env` files for the frontend.
-
----
-
-## 🔐 Web3Auth setup required
-
-To enable email/social login, you must configure Web3Auth in your Web3Auth dashboard first.
-
-### Steps
-
-1. Go to the [Web3Auth Dashboard](https://dashboard.web3auth.io/)
-2. Create a new project
-3. Copy your **Client ID**
-
-### Where to paste it
-
-Open the file:
-
-```
-frontend/.env
-```
-
-Add (or update) the following value:
-
-```env
-VITE_WEB3AUTH_CLIENT_ID=YOUR_CLIENT_ID_HERE
-```
-
-Save the file and restart the frontend if it's already running.
-
-### Once your website is open in your browser, copy the website link (URL).
-
-Next, go to your Web3Auth Dashboard. Inside your project settings, find Domains and paste your website link there, just like in the screenshot below. Click Add URL.
-
-This step is very important — it allows the Web3Auth wallet to work properly on your website.
-
-<img width="2908" height="1270" alt="image" src="https://github.com/user-attachments/assets/9e42fe72-02bb-4d2e-a29d-0fca3ccca272" />
-
----
-
-## 🖼 Optional: NFT Minting (IPFS / Pinata)
-
-If you want to create NFTs (with images/metadata), you’ll need to set up a small backend service for uploads.
-
-> ⚠️ Only do this if you plan to mint NFTs and upload metadata.
-
-#### If you’re only creating tokens or transfering tokens, you can skip this section.
-
-### Backend path
-
-```
-projects/TokenizeRWATemplate-contracts/NFT_mint_server
-```
-
-### Steps
-
-1. Go to https://app.pinata.cloud/developers/api-keys
-2. Create a new API key
-3. Copy the **JWT token**
-
-### Where to paste it
-
-Open:
-
-```
-projects/TokenizeRWATemplate-contracts/NFT_mint_server/.env
-```
-
-Add:
-
-```env
-PINATA_JWT=YOUR_PINATA_JWT_HERE
-```
-
-Save the file.
-
-### Start the NFT Mint Server
-
-After adding your Pinata JWT, start the NFT mint backend server.
-
-Navigate to the server folder:
-
-```
-projects/TokenizeRWATemplate-contracts/NFT_mint_server
-```
-
-Run the server:
-
-```
-bash npm start 
-```
-Important (Codespaces / Remote Environments)
-
-
-### Lastly, open the Ports tab and change/make sure Port 3000 to Public
-
----
-
-## 🌐 Starting the app again
-After you run setup.sh once, you have two simple options each time you reopen your Codespace - so you don’t need to run the setup again:
-
-### Option A: Terminal
-
+### 2. Configure Environment
 ```bash
-cd frontend
-npm run dev
+cp .env.example .env
+# Add your keys: GROQ_API_KEY, ALGORAND_TOKEN, PINATA_JWT
 ```
 
-### Option B: GitHub UI
+### 3. Run AI Verifier
+```bash
+cd ai_verifier
+pip install -r requirements.txt
+python document_checker.py
+```
 
-You can also start the frontend directly using the GitHub Codespaces UI, which is useful for demos and workshops.
+### 4. Run Backend API
+```bash
+cd api
+uvicorn main:app --reload
+# API available at http://localhost:8000
+```
 
-## Pro Tip!
-GitHub Codespaces is available on free accounts, but it includes up to 60 hours per month.
-To avoid losing your work, commit and sync your changes regularly (as shown in the demo video) so everything is saved to your forked repository.
-#### A “commit” is like hitting save with a short note, it records your changes in Git so you can keep them and come back to them later.
-
-https://github.com/user-attachments/assets/dd452ea1-3070-4718-af34-bea978e208ab
-
----
-
-## 🧠  Final note (important)
-- ✅ The app setup is mostly automatic
-- ✅ You must add a Web3Auth Client ID (to use the app/login)
-- ✅ Pinata is optional (only for NFT images/metadata)
-
-### If something isn’t working, it’s usually because:
-- Your Web3Auth Client ID is missing
-- You don’t have TestNet ALGO or USDC in your wallet
-
+### 5. Run Frontend
+```bash
+cd projects/TokenizeRWATemplate-frontend
+npm install && npm run dev
+```
 
 ---
 
-## 🪙 Tokenization Flow (High Level)
+## 🌍 Market Opportunity
 
-This template walks you through the basic steps to represent a real-world asset as a token on the Algorand blockchain (ASA).
-
-### Basic Flow
-
-1. **Connect with Algorand**  
-   Use Pera, Defly, Lute, or Web3Auth to interact with the app.
-
-2. **Define your asset parameters**  
-   Choose the asset name, unit name, total supply, decimals, and optional metadata.
-
-3. **Create an Algorand Standard Asset (ASA)**  
-   The asset is created on-chain and represents your real-world asset digitally.
-
-4. **Receive an Asset ID**  
-   Algorand assigns a unique Asset ID, which becomes the on-chain identifier for your tokenized asset.
-
-5. **Use or extend the token as your RWA representation**  
-   The ASA can now be transferred, held, integrated into apps, or extended with additional logic.
-
-### Advanced Asset Controls (Optional)
-
-ASAs support advanced management features commonly used in RWA and compliance-focused setups:
-
-| Role | Description |
-|------|-------------|
-| **Manager** | Can modify asset configuration |
-| **Reserve** | Holds non-circulating supply |
-| **Freeze** | Can freeze/unfreeze accounts |
-| **Clawback** | Can revoke assets from accounts |
-
-These controls are optional and depend on your use case and trust model.
+| Market | Size |
+|---|---|
+| India Real Estate | $1.3 Trillion |
+| Global RWA Tokenization (2030 projection) | $16 Trillion |
+| India Property Fraud (annual) | $40 Billion |
+| Algorand RWA Ecosystem | Growing |
 
 ---
 
-## 🧪 Disclaimer
+## 🔮 Roadmap
 
-> This repository is provided for **educational and experimental purposes only**.  
-> It does not constitute legal, financial, or investment advice.
+- [x] **Phase 1** — ASA tokenization template (done)
+- [x] **Phase 2** — AI verification layer (current)
+- [ ] **Phase 3** — Government API integration (Digilocker, India Stack)
+- [ ] **Phase 4** — Multi-country RWA support
+- [ ] **Phase 5** — DeFi lending against verified RWA collateral
 
 ---
 
-## 📹 Video Guides
+## 👨‍💻 Builder
 
-Below are videos on:
-- How to connect to TestNet on [Pera](https://perawallet.app/)
-- How to use the [Algo Dispenser](https://bank.testnet.algorand.network/)
-- How to use the [USDC Dispenser](https://faucet.circle.com/)
+**Gopichand Challa** — AI × Web3 Engineer, Guntur, Andhra Pradesh, India
 
-### How to connect to TestNet on Pera Wallet
+- 🐦 X/Twitter: [@GopichandAI](https://x.com/GopichandAI)
+- 💻 GitHub: [gopichandchalla16](https://github.com/gopichandchalla16)
+- 💼 LinkedIn: [gopichandchalla](https://linkedin.com/in/gopichandchalla)
+- 📧 gopichandchalla516@gmail.com
 
-https://github.com/user-attachments/assets/31df8135-119e-4529-9539-4943de979719
+> *Shortlisted at Cardano Hackathon Grand Finale, IBW Bengaluru 2025*  
+> *Algorand Web3 Masterclasses — Batch 3, 2026*
 
-### How to use the Algo Dispenser
+---
 
-https://github.com/user-attachments/assets/643cae10-4673-4b68-8e95-4a3f16fbba60
+## ⚠️ Disclaimer
 
-### How to use the USDC Dispenser
+This project is a technical proof-of-concept built for the Algorand Web3 Masterclasses Pitch Competition. It does not constitute legal, financial, or investment advice.
 
-https://github.com/user-attachments/assets/a76e90fa-97f4-44f8-a7e8-a8ccabd24398
+---
+
+<div align="center">
+
+**Built with ❤️ on Algorand · Powered by AI · Made in India 🇮🇳**
+
+</div>
