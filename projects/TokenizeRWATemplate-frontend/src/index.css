@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --algo-green: #00D4AA;
+  --algo-green-dark: #00A882;
+  --algo-blue: #0066FF;
+  --bg-dark: #050A14;
+  --bg-card: #0D1626;
+  --bg-card-hover: #111D33;
+  --border-glow: rgba(0, 212, 170, 0.3);
+  --text-primary: #F0F6FF;
+  --text-secondary: #8899AA;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.font-space { font-family: 'Space Grotesk', sans-serif; }
+
+/* Glow effects */
+.glow-green {
+  box-shadow: 0 0 20px rgba(0, 212, 170, 0.25), 0 0 60px rgba(0, 212, 170, 0.1);
+}
+.glow-blue {
+  box-shadow: 0 0 20px rgba(0, 102, 255, 0.25), 0 0 60px rgba(0, 102, 255, 0.1);
+}
+.text-glow {
+  text-shadow: 0 0 30px rgba(0, 212, 170, 0.5);
+}
+
+/* Animated gradient bg */
+.gradient-bg {
+  background: radial-gradient(ellipse at 20% 50%, rgba(0, 212, 170, 0.08) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 20%, rgba(0, 102, 255, 0.08) 0%, transparent 50%),
+              var(--bg-dark);
+}
+
+/* Grid pattern overlay */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(0, 212, 170, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 170, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Card styles */
+.card {
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 212, 170, 0.15);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+.card:hover {
+  border-color: rgba(0, 212, 170, 0.35);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(13, 22, 38, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 212, 170, 0.15);
+}
+
+/* Progress bar animation */
+@keyframes progress-fill {
+  from { width: 0%; }
+  to { width: var(--progress-width); }
+}
+.progress-animate {
+  animation: progress-fill 1.5s ease-out forwards;
+}
+
+/* Pulse animation for status indicators */
+@keyframes pulse-green {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.4); }
+  50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(0, 212, 170, 0); }
+}
+.pulse-green { animation: pulse-green 2s infinite; }
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+.float { animation: float 4s ease-in-out infinite; }
+
+/* Scan line animation for AI verifier */
+@keyframes scan {
+  0% { top: 0; opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* Step connector line */
+.step-line::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(0, 212, 170, 0.5), transparent);
+  transform: translateX(-50%);
+}
+
+/* Button styles */
+.btn-primary {
+  background: linear-gradient(135deg, #00D4AA, #00A882);
+  color: #050A14;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: 0.5px;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 212, 170, 0.4);
+}
+.btn-secondary {
+  background: transparent;
+  color: #00D4AA;
+  font-weight: 600;
+  padding: 13px 32px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 212, 170, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Space Grotesk', sans-serif;
+}
+.btn-secondary:hover {
+  background: rgba(0, 212, 170, 0.08);
+  border-color: #00D4AA;
+  transform: translateY(-2px);
+}
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.badge-green {
+  background: rgba(0, 212, 170, 0.1);
+  color: #00D4AA;
+  border: 1px solid rgba(0, 212, 170, 0.3);
+}
+.badge-blue {
+  background: rgba(0, 102, 255, 0.1);
+  color: #5599FF;
+  border: 1px solid rgba(0, 102, 255, 0.3);
+}
+.badge-orange {
+  background: rgba(255, 140, 0, 0.1);
+  color: #FFAA44;
+  border: 1px solid rgba(255, 140, 0, 0.3);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: rgba(0, 212, 170, 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 212, 170, 0.5); }
+
+/* Typewriter cursor */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+.cursor::after {
+  content: '|';
+  animation: blink 1s infinite;
+  color: #00D4AA;
+}
+
+/* Risk score meter */
+.risk-low { color: #00D4AA; }
+.risk-medium { color: #FFAA44; }
+.risk-high { color: #FF4455; }
